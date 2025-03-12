@@ -1,3 +1,11 @@
+const useragt = navigator.userAgent.toLowerCase();
+if (useragt.match(/kakaotalk/i)) {
+  location.href =
+    'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href);
+} else if (useragt.match(/line/i)) {
+  location.href = location.href + '?openExternalBrowser=1';
+}
+
 // Change 'josa(조사)' labels when title input changes
 document.getElementById('title-input').addEventListener('change', (e) => {
   title = e.target.value;
