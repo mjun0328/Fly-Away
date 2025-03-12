@@ -26,9 +26,23 @@ main {
   max-width: 100vw;
 }
 
+.toolbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 24rem;
+  width: 24rem;
+  height: 42rem;
+}
+
 canvas {
   aspect-ratio: 458 / 580;
   width: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .loading {
@@ -40,15 +54,14 @@ canvas {
   height: 0;
 }
 
-@media (min-width: 801px) {
-  main > section {
-    min-width: 20rem;
-  }
-}
-
-@media (max-width: 900px) {
+@media (max-width: 990px) {
   main {
     gap: 2.5rem;
+  }
+
+  .toolbox {
+    min-width: 20rem;
+    width: 20rem;
   }
 }
 
@@ -56,6 +69,19 @@ canvas {
   main {
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .toolbox {
+    min-width: auto;
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .button-group {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 

@@ -107,13 +107,19 @@ const draw = () => {
         y: actualY,
       } = getActualImageDimensions(overlayImg);
 
-      const ratio = 260 / Math.max(actualWidth, actualHeight);
+      const moveX = parseInt(document.getElementById('x-input').value);
+      const moveY = parseInt(document.getElementById('y-input').value);
+      const scale = parseInt(document.getElementById('scale-input').value);
+      const degree = parseInt(document.getElementById('degree-input').value);
+      if (isNaN(moveX) || isNaN(moveY)) return;
+
+      const ratio = (260 * scale) / 100 / Math.max(actualWidth, actualHeight);
       const overlayWidth = overlayImg.width * ratio;
       const overlayHeight = overlayImg.height * ratio;
-      const overlayDegree = (Math.PI / 180) * 12;
+      const overlayDegree = (Math.PI / 180) * degree;
 
-      const overlayX = -(actualWidth / 2 + actualX) * ratio;
-      const overlayY = -(actualHeight / 2 + actualY) * ratio;
+      const overlayX = -(actualWidth / 2 + actualX) * ratio + moveX;
+      const overlayY = -(actualHeight / 2 + actualY) * ratio + moveY;
 
       ctx.filter = 'blur(0.8px) brightness(1.2)';
       ctx.translate(canvas.width / 2, 400);
@@ -216,4 +222,18 @@ const download = () => {
     link.click();
     URL.revokeObjectURL(blob);
   }, 'image/png');
+};
+
+// Toolbox functions for modifying values(translate, rotate, scale)
+const modifyValue = (e, delta) => {
+  const input = e.target.parentElement.getElementsByTagName('input')[0];
+  input.value = parseInt(input.value) + delta;
+  draw();
+};
+
+const switchToolbox = () => {
+  document.getElementById('toolbox-1').hidden =
+    !document.getElementById('toolbox-1').hidden;
+  document.getElementById('toolbox-2').hidden =
+    !document.getElementById('toolbox-2').hidden;
 };

@@ -66,7 +66,7 @@
       <div>
         <canvas id="canvas" width="458" height="580"></canvas>
       </div>
-      <section>
+      <section id="toolbox-1" class="toolbox">
         <div class="mb-5">
           <label for="title-input" class="form-label"
             >무엇이 날아가 버렸으면 좋겠나요?</label
@@ -174,20 +174,152 @@
             class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
             href="#"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#imageInfoModal"
             >어떤 사진을 업로드해야 하나요?</a
           >
         </div>
-        <button type="button" class="btn btn-primary" onclick="download()">
-          완성본 다운로드하기
-        </button>
+        <div class="button-group">
+          <button type="button" class="btn btn-light" onclick="switchToolbox()">
+            사진 상세 조정하기
+          </button>
+          <button type="button" class="btn btn-primary" onclick="download()">
+            완성본 다운로드하기
+          </button>
+        </div>
+      </section>
+
+      <section id="toolbox-2" class="toolbox" hidden>
+        <div class="row">
+          <div class="col mb-5">
+            <label for="title-input" class="form-label">가로 위치</label>
+            <div class="input-group">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, -10)"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                class="form-control text-center"
+                id="x-input"
+                value="0"
+                inputmode="numeric"
+                oninput="this.value = this.value.replace(/-\D/g, '')"
+                onchange="this.value = parseInt(this.value); draw();"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, 10)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <label for="title-input" class="form-label">세로 위치</label>
+            <div class="input-group">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, -10)"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                class="form-control text-center"
+                id="y-input"
+                value="0"
+                inputmode="numeric"
+                oninput="this.value = this.value.replace(/-\D/g, '')"
+                onchange="this.value = parseInt(this.value); draw();"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, 10)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-5">
+            <label for="title-input" class="form-label">크기</label>
+            <div class="input-group">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, -10)"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                class="form-control text-center"
+                id="scale-input"
+                value="100"
+                inputmode="numeric"
+                oninput="this.value = this.value.replace(/-\D/g, '')"
+                onchange="this.value = parseInt(this.value); draw();"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, 10)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <label for="title-input" class="form-label">각도</label>
+            <div class="input-group">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, -10)"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                class="form-control text-center"
+                id="degree-input"
+                value="12"
+                inputmode="numeric"
+                oninput="this.value = this.value.replace(/-\D/g, '')"
+                onchange="this.value = parseInt(this.value); draw();"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="modifyValue(event, 10)"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn btn-light" onclick="switchToolbox()">
+            돌아가기
+          </button>
+          <button type="button" class="btn btn-primary" onclick="download()">
+            완성본 다운로드하기
+          </button>
+        </div>
       </section>
 
       <div
         class="modal fade"
-        id="exampleModal"
+        id="imageInfoModal"
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby="imageInfoModalLabel"
         aria-hidden="true"
       >
         <div
@@ -195,7 +327,7 @@
         >
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
+              <h1 class="modal-title fs-5" id="imageInfoModalLabel">
                 어떤 사진을 업로드해야 하나요?
               </h1>
             </div>
