@@ -1,0 +1,84 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+@font-face {
+  font-family: 'RixMomsBlanketR';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/RixMomsBlanketR.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Pretendard Variable';
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  display: inline-flex;
+  gap: 5rem;
+  padding: 2rem;
+  margin: auto;
+  max-width: 100vw;
+}
+
+canvas {
+  aspect-ratio: 458 / 580;
+  width: 100%;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+@media (min-width: 801px) {
+  main > section {
+    min-width: 20rem;
+  }
+}
+
+@media (max-width: 900px) {
+  main {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  main {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+footer {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 2rem;
+}
+
+footer p {
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+
+footer p a {
+  font-size: inherit;
+}
+
+@media (max-width: 440px) {
+  footer {
+    flex-direction: column;
+    gap: 0;
+  }
+}
