@@ -56,6 +56,9 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <!-- es-hangul 모듈은 번들러 사용을 전제로 작성되었으므로, 아래와 같은 코드가 필요합니다 -->
+    <script>const module = {}</script>
+    <script src="https://cdn.jsdelivr.net/npm/es-hangul@2.3.2/dist/index.min.js"></script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -86,46 +89,6 @@
             onchange="draw()"
           />
           <span class="form-text">3글자까지만 입력할 수 있어요</span>
-        </div>
-        <div class="mb-5">
-          <label class="form-label">어느 표현이 자연스러운가요?</label>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              id="josa1"
-              name="josa-input"
-              value="이"
-              onchange="draw()"
-            />
-            <label
-              id="josa1-label"
-              class="form-check-label"
-              for="josa1"
-              data-value="이"
-            >
-              학교<b>이</b> 날아가버렸으면 좋겠어
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              id="josa2"
-              name="josa-input"
-              value="가"
-              onchange="draw()"
-              checked
-            />
-            <label
-              id="josa2-label"
-              class="form-check-label"
-              for="josa2"
-              data-value="가"
-            >
-              학교<b>가</b> 날아가버렸으면 좋겠어
-            </label>
-          </div>
         </div>
         <div class="mb-5">
           <label class="form-label"
