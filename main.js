@@ -6,6 +6,20 @@ if (useragt.match(/kakaotalk/i)) {
   location.href = location.href + '?openExternalBrowser=1';
 }
 
+// Change 'josa(조사)' labels when title input changes
+document.getElementById('title-input').addEventListener('change', (e) => {
+  const title = e.target.value;
+  const josa = module.exports.josa.pick(title, '이/가');
+
+  [
+    document.getElementById('josa1-label'),
+    document.getElementById('josa2-label'),
+  ].forEach((label) => {
+    label.innerHTML = `${title}<b>${label.dataset.value}</b> 날아가버렸으면 좋겠어`;
+    if (josa === label.dataset.value) label.click();
+  });
+});
+
 // Update canvas when user uploads an overlay image
 let userOverlayImg = null;
 document.getElementById('overlay-input').addEventListener('change', (e) => {
@@ -23,9 +37,7 @@ document.getElementById('overlay-input').addEventListener('change', (e) => {
 const draw = () => {
   // get input values
   const title = document.getElementById('title-input').value;
-
-  const josa = module.exports.josa.pick(title, '이/가');
-
+  const josa = document.querySelector('input[name="josa-input"]:checked').value;
   const author = document.getElementById('author-input').value;
   const illustrator = document.getElementById('illustrator-input').value;
   const translator = document.getElementById('translator-input').value;
