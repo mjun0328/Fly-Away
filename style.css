@@ -18,6 +18,47 @@ body {
   min-height: 100vh;
 }
 
+header {
+  margin: 0;
+  padding: 1.5rem 2rem 1rem 2rem;
+}
+
+header h1 {
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 650;
+  margin: 0;
+}
+
+header h1 span {
+  line-height: 2rem;
+}
+
+header h1 > div {
+  height: 1.8rem;
+  overflow: hidden;
+}
+
+header h1 > div div {
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s;
+}
+
+@media (max-width: 500px) {
+  header {
+    padding: 1.5rem 2rem 0 2rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header h1 > div {
+    display: none;
+  }
+}
+
 main {
   display: inline-flex;
   gap: 5rem;

@@ -6,6 +6,16 @@ if (useragt.match(/kakaotalk/i)) {
   location.href = location.href + '?openExternalBrowser=1';
 }
 
+const changeTitle = (i) => {
+  if (i > 4) return;
+  const headerText = document.getElementsByClassName('header-text')[0];
+  headerText.style.marginTop = `-${i * 2}rem`;
+  setTimeout(() => {
+    changeTitle(i + 1);
+  }, 2000);
+};
+changeTitle(0);
+
 // Change 'josa(조사)' labels when title input changes
 document.getElementById('title-input').addEventListener('change', (e) => {
   const title = e.target.value;
